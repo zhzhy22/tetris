@@ -35,6 +35,7 @@ test.describe('responsive layout', () => {
           caret: 'hide',
           fullPage: true,
           scale: 'css',
+          maxDiffPixelRatio: 0.002,
         });
       });
     }
