@@ -1,0 +1,53 @@
+{
+  "timestamp": "2025-10-04T08:43:57.358Z",
+  "config": {
+    "durationMs": 300000,
+    "frameMs": 33,
+    "reportDir": "/Volumes/MestorBox01/test_code/game/reports",
+    "startLevel": 0,
+    "restartHeight": 16,
+    "maxRestarts": 12,
+    "logIntervalMs": 60000,
+    "rootDir": "/Volumes/MestorBox01/test_code/game"
+  },
+  "summary": {
+    "simulatedMinutes": 0.9614,
+    "simulatedMs": 57684,
+    "realDurationMs": 32,
+    "framesSimulated": 1748,
+    "piecesPlaced": 382,
+    "restarts": 13,
+    "endedEarly": true,
+    "failureReason": "Exceeded maximum restarts (12)"
+  },
+  "game": {
+    "finalPhase": "playing",
+    "score": 610,
+    "lines": 0,
+    "level": 0,
+    "maxHeight": 16,
+    "maxLockMs": 0,
+    "maxLockFrames": 0
+  },
+  "system": {
+    "peakRss": 90931200,
+    "peakHeapUsed": 11807344,
+    "peakExternal": 2395602
+  },
+  "timeline": [],
+  "notes": [
+    "Restart due to stack height 16 at 4.2s",
+    "Restart due to stack height 16 at 9.2s",
+    "Restart due to stack height 16 at 14.2s",
+    "Restart due to stack height 16 at 18.9s",
+    "Restart due to stack height 16 at 23.9s",
+    "Restart due to stack height 16 at 28.4s",
+    "Restart due to stack height 16 at 32.4s",
+    "Restart due to stack height 16 at 36.4s",
+    "Restart due to stack height 16 at 41.0s",
+    "Restart due to stack height 16 at 45.0s",
+    "Restart due to stack height 16 at 49.5s",
+    "Restart due to stack height 16 at 53.6s",
+    "Restart due to stack height 16 at 57.7s"
+  ]
+}
