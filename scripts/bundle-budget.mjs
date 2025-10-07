@@ -89,7 +89,6 @@ async function main() {
   const totalGzipBytes = measurements.reduce((sum, item) => sum + item.gzipSize, 0);
   const limit = Number.parseInt(process.env.BUNDLE_BUDGET_BYTES ?? '', 10) || DEFAULT_LIMIT_BYTES;
 
-  /* eslint-disable no-console */
   console.log('Bundle budget report (gzipped sizes):');
   for (const item of measurements.sort((a, b) => b.gzipSize - a.gzipSize)) {
     console.log(`  ${item.relativePath.padEnd(40)} ${formatBytes(item.gzipSize)}`);
@@ -97,7 +96,6 @@ async function main() {
   console.log(`  ${'-'.repeat(40)} ${'-'.repeat(12)}`);
   console.log(`  Total`.padEnd(42) + formatBytes(totalGzipBytes));
   console.log(`  Limit`.padEnd(42) + formatBytes(limit));
-  /* eslint-enable no-console */
 
   if (totalGzipBytes > limit) {
     const overBy = totalGzipBytes - limit;
@@ -108,11 +106,9 @@ async function main() {
 }
 
 main().catch((error) => {
-  /* eslint-disable no-console */
   console.error('[bundle-budget] check failed:', error.message);
   if (error?.cause) {
     console.error('  cause:', error.cause);
   }
-  /* eslint-enable no-console */
   process.exitCode = 1;
 });

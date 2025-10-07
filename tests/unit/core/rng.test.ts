@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+
 import { createSevenBagRng, drawNextPiece } from '../../../src/core/rng';
 
 type TetrominoType = 'I' | 'O' | 'T' | 'S' | 'Z' | 'J' | 'L';

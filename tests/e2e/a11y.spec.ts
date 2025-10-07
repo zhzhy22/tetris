@@ -1,7 +1,9 @@
-import { test, expect, type Page } from '@playwright/test';
-import type { GameSessionState } from '../../src/core/game-loop';
 import AxeBuilder from '@axe-core/playwright';
+import { test, expect, type Page } from '@playwright/test';
+
 import { installDeterministicRng } from './utils/deterministic';
+
+import type { GameSessionState } from '../../src/core/game-loop';
 
 declare global {
   interface Window {

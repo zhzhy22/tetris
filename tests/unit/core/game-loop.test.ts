@@ -1,10 +1,11 @@
 import { describe, expect, it } from 'vitest';
+
+import { DEFAULT_BOARD_ROWS } from '../../../src/core/board';
 import {
   createGameLoop,
   type GameLoop,
   type GameSessionState,
 } from '../../../src/core/game-loop';
-import { DEFAULT_BOARD_ROWS } from '../../../src/core/board';
 
 const TEST_SEED = '0123456789abcdef';
 

@@ -1,6 +1,7 @@
 import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
-import { createControlScheme, type ControlSchemeOptions } from '../../../src/input/control-scheme';
+
 import { type ControlInput } from '../../../src/core/game-loop';
+import { createControlScheme, type ControlSchemeOptions } from '../../../src/input/control-scheme';
 import { type FrameEvent, type RafLoop } from '../../../src/utils/raf-loop';
 
 class StubRafLoop implements RafLoop {

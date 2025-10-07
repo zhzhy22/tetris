@@ -9,6 +9,7 @@ import {
   type GameSessionState,
 } from '../src/core/game-loop';
 import { getPieceShape } from '../src/core/srs';
+
 import type { Board } from '../src/core/collision';
 
 interface SoakConfig {
@@ -162,7 +163,6 @@ function parseDuration(value: string, fallback: number): number {
 }
 
 function printHelp(): void {
-  /* eslint-disable no-console */
   console.log(`Usage: npm run soak [-- --option=value]
 
 Options:
@@ -175,7 +175,6 @@ Options:
   --log-interval=<value>    Interval for progress logging (default: 1m).
   --start-level=<level>     Initial level for the session (default: 0).
 `);
-  /* eslint-enable no-console */
 }
 
 function computeColumnHeights(board: Board): number[] {
@@ -314,11 +313,9 @@ async function main(): Promise<void> {
   let nextLogAt = config.logIntervalMs;
 
   const notifyProgress = () => {
-    /* eslint-disable no-console */
     console.log(
       `[soak] simulated ${(metrics.simulatedMs / 60_000).toFixed(2)} min | score ${latestState.stats.score} | lines ${latestState.stats.lines} | level ${latestState.stats.level} | restarts ${metrics.restarts}`,
     );
-    /* eslint-enable no-console */
     metrics.progress.push({
       simulatedMs: metrics.simulatedMs,
       lines: latestState.stats.lines,
@@ -495,27 +492,21 @@ async function main(): Promise<void> {
   await writeFile(reportPath, JSON.stringify(report, null, 2), 'utf8');
 
   if (failureReason) {
-    /* eslint-disable no-console */
     console.error(`\n[soak] FAILED: ${failureReason}`);
     console.error(`Report written to ${reportPath}`);
-    /* eslint-enable no-console */
     process.exitCode = 1;
     return;
   }
 
-  /* eslint-disable no-console */
   console.log('\n[soak] SUCCESS');
   console.log(`Simulated ${(metrics.simulatedMs / 60_000).toFixed(2)} minutes in ${
     realDurationMs / 1000
   }s (wall clock)`);
   console.log(`Pieces placed: ${metrics.piecesPlaced} | Restarts: ${metrics.restarts}`);
   console.log(`Report written to ${reportPath}`);
-  /* eslint-enable no-console */
 }
 
 main().catch((error) => {
-  /* eslint-disable no-console */
   console.error('[soak] Unexpected error:', error);
-  /* eslint-enable no-console */
   process.exitCode = 1;
 });

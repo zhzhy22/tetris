@@ -1,27 +1,29 @@
 import { afterEach, beforeEach, describe, expect, it, vi, type Mock } from 'vitest';
-import { createApp, type AppOptions } from '../../../src/ui/app';
+
 import { createEmptyBoard } from '../../../src/core/board';
+import { createApp, type AppOptions } from '../../../src/ui/app';
+
+import type { SfxManager } from '../../../src/audio/sfx';
 import type { GameLoop, GameSessionState } from '../../../src/core/game-loop';
-import type { CanvasRenderer, RenderSnapshot } from '../../../src/render/canvas-renderer';
+import type { TetrominoType } from '../../../src/core/rng';
 import type {
   ControlScheme,
   ControlSchemeListener,
   ControlSchemeOptions,
 } from '../../../src/input/control-scheme';
-import type { RafLoop, FrameEvent } from '../../../src/utils/raf-loop';
-import type { TetrominoType } from '../../../src/core/rng';
-import type {
-  Settings,
-  SettingsPanel,
-  SettingsPanelOptions,
-} from '../../../src/ui/settings-panel';
+import type { CanvasRenderer, RenderSnapshot } from '../../../src/render/canvas-renderer';
 import type {
   HighScoreEntry,
   HighScoresStore,
   SettingsStore,
   StoredSettingsPayload,
 } from '../../../src/storage/local';
-import type { SfxManager } from '../../../src/audio/sfx';
+import type {
+  Settings,
+  SettingsPanel,
+  SettingsPanelOptions,
+} from '../../../src/ui/settings-panel';
+import type { RafLoop, FrameEvent } from '../../../src/utils/raf-loop';
 
 const defaultTuning = {
   dasMs: 170,
@@ -346,7 +348,7 @@ describe('ui/app', () => {
       [string, { playbackRate?: number }?]
     >;
     expect(playCalls.length).toBeGreaterThan(0);
-    const [firstId, firstOptions] = playCalls[0]!;
+    const [firstId, firstOptions] = playCalls[0];
     expect(firstId).toBe('line-clear');
     expect(firstOptions?.playbackRate).toBeCloseTo(1.25, 2);
 
@@ -359,7 +361,7 @@ describe('ui/app', () => {
 
     expect(deps.sfxManager.play).toHaveBeenCalledTimes(2);
   expect(playCalls.length).toBeGreaterThanOrEqual(2);
-  const [secondId] = playCalls[1]!;
+  const [secondId] = playCalls[1];
     expect(secondId).toBe('game-over');
 
     app.destroy();

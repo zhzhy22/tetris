@@ -1,5 +1,6 @@
-import type { ControlInput } from '../core/game-loop';
 import { createRafLoop, type FrameEvent, type RafLoop } from '../utils/raf-loop';
+
+import type { ControlInput } from '../core/game-loop';
 
 export type ControlSchemeListener = (input: ControlInput) => void;
 

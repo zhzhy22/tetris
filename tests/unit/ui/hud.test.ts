@@ -1,6 +1,8 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { createHud, type HudInstance } from '../../../src/ui/hud';
+
 import { createEmptyBoard } from '../../../src/core/board';
+import { createHud, type HudInstance } from '../../../src/ui/hud';
+
 import type { GameSessionState } from '../../../src/core/game-loop';
 import type { TetrominoType } from '../../../src/core/rng';
 

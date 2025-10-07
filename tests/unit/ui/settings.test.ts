@@ -1,12 +1,14 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
+
 import {
   createSettingsPanel,
   type Settings,
   type SettingsPanel,
   type SettingsPanelOptions,
 } from '../../../src/ui/settings-panel';
-import type { HighScoreEntry } from '../../../src/storage/local';
+
 import type { ControlTuning } from '../../../src/input/control-scheme';
+import type { HighScoreEntry } from '../../../src/storage/local';
 
 const defaultSettings: Settings = {
   soundEnabled: true,

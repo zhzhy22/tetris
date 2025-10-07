@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+
 import { installDeterministicRng } from './utils/deterministic';
 
 test.describe('responsive layout', () => {

@@ -1,6 +1,6 @@
+import type { HighScoreEntry, StoredHighScoresPayload } from './schema';
 import type { ControlTuning } from '../input/control-scheme';
 import type { Settings } from '../ui/settings-panel';
-import type { HighScoreEntry, StoredHighScoresPayload } from './schema';
 
 export const SETTINGS_STORAGE_KEY = 'tetris:settings';
 export const HIGH_SCORES_STORAGE_KEY = 'tetris:high-scores';
@@ -51,7 +51,7 @@ function selectStorage(storage?: Storage | null): Storage | null {
   }
   try {
     return window.localStorage ?? null;
-  } catch (error) {
+  } catch {
     return null;
   }
 }
@@ -192,17 +192,17 @@ export function createSettingsStore(options: SettingsStoreOptions = {}): Setting
   const key = options.key ?? SETTINGS_STORAGE_KEY;
   const logger: Pick<Console, 'warn' | 'error'> = options.logger ?? console;
 
-  async function load(): Promise<StoredSettingsPayload | null> {
+  function load(): Promise<StoredSettingsPayload | null> {
     if (!storage) {
-      return null;
+      return Promise.resolve(null);
     }
     const raw = storage.getItem(key);
-    return parsePayload(raw, logger);
+    return Promise.resolve(parsePayload(raw, logger));
   }
 
-  async function save(payload: StoredSettingsPayload): Promise<void> {
+  function save(payload: StoredSettingsPayload): Promise<void> {
     if (!storage) {
-      return;
+      return Promise.resolve();
     }
     try {
       storage.setItem(
@@ -215,17 +215,19 @@ export function createSettingsStore(options: SettingsStoreOptions = {}): Setting
     } catch (error) {
       logger.warn('Failed to persist settings payload', error);
     }
+    return Promise.resolve();
   }
 
-  async function clear(): Promise<void> {
+  function clear(): Promise<void> {
     if (!storage) {
-      return;
+      return Promise.resolve();
     }
     try {
       storage.removeItem(key);
     } catch (error) {
       logger.warn('Failed to clear stored settings', error);
     }
+    return Promise.resolve();
   }
 
   return {
@@ -243,20 +245,20 @@ export function createHighScoresStore(options: HighScoresStoreOptions = {}): Hig
     : DEFAULT_HIGH_SCORES_LIMIT;
   const logger: Pick<Console, 'warn'> = options.logger ?? console;
 
-  async function load(): Promise<HighScoreEntry[]> {
+  function load(): Promise<HighScoreEntry[]> {
     if (!storage) {
-      return [];
+      return Promise.resolve([]);
     }
     const raw = storage.getItem(key);
     if (!raw) {
-      return [];
+      return Promise.resolve([]);
     }
     try {
       const parsed = JSON.parse(raw) as StoredHighScoresPayload;
-      return normalizeHighScores(parsed.entries, limit, logger);
+      return Promise.resolve(normalizeHighScores(parsed.entries, limit, logger));
     } catch (error) {
       logger.warn('Failed to parse stored high scores', error);
-      return [];
+      return Promise.resolve([]);
     }
   }
 
@@ -273,8 +275,9 @@ export function createHighScoresStore(options: HighScoresStoreOptions = {}): Hig
     return payload.entries;
   }
 
-  async function save(entries: HighScoreEntry[]): Promise<void> {
+  function save(entries: HighScoreEntry[]): Promise<void> {
     persist(entries);
+    return Promise.resolve();
   }
 
   async function append(entry: HighScoreEntry): Promise<HighScoreEntry[]> {
@@ -282,15 +285,16 @@ export function createHighScoresStore(options: HighScoresStoreOptions = {}): Hig
     return persist([...existing, entry]);
   }
 
-  async function clear(): Promise<void> {
+  function clear(): Promise<void> {
     if (!storage) {
-      return;
+      return Promise.resolve();
     }
     try {
       storage.removeItem(key);
     } catch (error) {
       logger.warn('Failed to clear stored high scores', error);
     }
+    return Promise.resolve();
   }
 
   return {

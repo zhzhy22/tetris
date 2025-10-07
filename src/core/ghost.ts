@@ -1,7 +1,8 @@
 import { checkCollision } from './collision';
+import { getPieceShape } from './srs';
+
 import type { Board } from './board';
 import type { PieceState } from './srs';
-import { getPieceShape } from './srs';
 
 export interface GhostInput {
   board: Board;

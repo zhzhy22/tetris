@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
 import {
   createHighScoresStore,
   createSettingsStore,
@@ -6,8 +7,9 @@ import {
   type StoredHighScoresPayload,
   type StoredSettingsPayload,
 } from '../../../src/storage/local';
-import type { Settings } from '../../../src/ui/settings-panel';
+
 import type { ControlTuning } from '../../../src/input/control-scheme';
+import type { Settings } from '../../../src/ui/settings-panel';
 
 const defaultSettings: Settings = {
   soundEnabled: true,

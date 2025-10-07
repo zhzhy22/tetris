@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+
 import { createRafLoop, type FrameEvent } from '../../../src/utils/raf-loop';
 
 type FrameCallback = Parameters<typeof requestAnimationFrame>[0];

@@ -25,7 +25,7 @@ export interface GravityStepResult {
   lockReset: boolean;
 }
 
-export function createGravityState(_config: GravityConfig): GravityState {
+export function createGravityState(): GravityState {
   return {
     fallElapsedMs: 0,
     lockElapsedMs: 0,

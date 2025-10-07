@@ -1,32 +1,25 @@
 import {
+  createSfxManager as createDefaultSfxManager,
+  type SfxManager,
+} from '../audio/sfx';
+import { DEFAULT_BOARD_COLS, DEFAULT_BOARD_ROWS } from '../core/board';
+import {
   createGameLoop as createDefaultGameLoop,
   type ControlInput,
   type GameLoop,
   type GameSessionState,
 } from '../core/game-loop';
-import { DEFAULT_BOARD_COLS, DEFAULT_BOARD_ROWS } from '../core/board';
-import {
-  createCanvasRenderer as createDefaultRenderer,
-  type CanvasRenderer,
-  type RenderSnapshot,
-} from '../render/canvas-renderer';
 import {
   createControlScheme as createDefaultControlScheme,
   CONTROL_TUNING_LIMITS,
   type ControlScheme,
   type ControlSchemeOptions,
 } from '../input/control-scheme';
-import { createRafLoop as createDefaultRafLoop, type RafLoop } from '../utils/raf-loop';
-import { createHud } from './hud';
-import { createDebugOverlay, type DebugOverlayInstance } from './debug-overlay';
 import {
-  createSettingsPanel as createDefaultSettingsPanel,
-  type ControlTuningLimits,
-  type Settings,
-  type SettingsPanel,
-  type SettingsPanelOptions,
-} from './settings-panel';
-import { createTouchFeedback } from './touch-feedback';
+  createCanvasRenderer as createDefaultRenderer,
+  type CanvasRenderer,
+  type RenderSnapshot,
+} from '../render/canvas-renderer';
 import {
   createSettingsStore as createDefaultSettingsStore,
   createHighScoresStore as createDefaultHighScoresStore,
@@ -35,11 +28,19 @@ import {
   type HighScoreEntry,
   type StoredSettingsPayload,
 } from '../storage/local';
-import {
-  createSfxManager as createDefaultSfxManager,
-  type SfxManager,
-} from '../audio/sfx';
+import { createRafLoop as createDefaultRafLoop, type RafLoop } from '../utils/raf-loop';
+
 import { createAudioController } from './audio-controller';
+import { createDebugOverlay, type DebugOverlayInstance } from './debug-overlay';
+import { createHud } from './hud';
+import {
+  createSettingsPanel as createDefaultSettingsPanel,
+  type ControlTuningLimits,
+  type Settings,
+  type SettingsPanel,
+  type SettingsPanelOptions,
+} from './settings-panel';
+import { createTouchFeedback } from './touch-feedback';
 
 type ButtonAction =
   | 'moveLeft'

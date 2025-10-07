@@ -1,6 +1,8 @@
 import { expect, test, type Locator, type Page } from '@playwright/test';
-import type { GameSessionState } from '../../src/core/game-loop';
+
 import { installDeterministicRng } from './utils/deterministic';
+
+import type { GameSessionState } from '../../src/core/game-loop';
 
 declare global {
   interface Window {

@@ -312,7 +312,7 @@ export function createSettingsPanel(options: SettingsPanelOptions): SettingsPane
       for (const dispose of cleanup.splice(0, cleanup.length)) {
         try {
           dispose();
-        } catch (error) {
+        } catch {
           // Swallow cleanup errors to avoid cascading failures during teardown.
         }
       }

@@ -1,9 +1,11 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { createCanvasRenderer, type CanvasRenderer } from '../../../src/render/canvas-renderer';
+
 import { createEmptyBoard } from '../../../src/core/board';
-import type { PieceState } from '../../../src/core/srs';
-import type { TetrominoType } from '../../../src/core/rng';
+import { createCanvasRenderer, type CanvasRenderer } from '../../../src/render/canvas-renderer';
+
 import type { Board } from '../../../src/core/board';
+import type { TetrominoType } from '../../../src/core/rng';
+import type { PieceState } from '../../../src/core/srs';
 
 type Operation =
   | { type: 'scale'; x: number; y: number }

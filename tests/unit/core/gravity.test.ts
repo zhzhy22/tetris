@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+
 import {
   createGravityState,
   stepGravity,
@@ -62,7 +63,7 @@ describe('gravity step', () => {
   });
 
   it('resets lock delay when a reset action occurs while grounded', () => {
-    let state = createGravityState(CONFIG);
+    const state = createGravityState(CONFIG);
 
     let result = advance(state, { deltaMs: 300, grounded: true });
     expect(result.state.lockElapsedMs).toBe(300);
@@ -79,7 +80,7 @@ describe('gravity step', () => {
   });
 
   it('locks after 15 grounded frames even if ms threshold not reached', () => {
-    let state = createGravityState(CONFIG);
+    const state = createGravityState(CONFIG);
     let result = advance(state, { grounded: true, deltaMs: 10 });
 
     for (let i = 0; i < 13; i += 1) {

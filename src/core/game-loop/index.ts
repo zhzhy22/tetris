@@ -6,16 +6,16 @@ import {
   type Board,
 } from '../board';
 import { checkCollision } from '../collision';
-import { createGravityState, stepGravity, type GravityConfig, type GravityState } from '../gravity';
-import { advanceQueue, createNextQueue, type NextQueueState } from '../next-queue';
-import { createSevenBagRng, type RandomState, type TetrominoType } from '../rng';
 import { computeGhostPosition } from '../ghost';
+import { createGravityState, stepGravity, type GravityConfig, type GravityState } from '../gravity';
 import {
   createHoldState,
   performHold,
   resetHold,
   type HoldState,
 } from '../hold';
+import { advanceQueue, createNextQueue, type NextQueueState } from '../next-queue';
+import { createSevenBagRng, type RandomState, type TetrominoType } from '../rng';
 import {
   applyHardDrop,
   applyLineClear,
@@ -158,7 +158,7 @@ export function createGameLoop(options: GameLoopOptions = {}): GameLoop {
       lockDelayMs: speed.lockDelayMs,
       lockDelayFrames: LOCK_DELAY_FRAMES,
     };
-    const gravity = createGravityState(gravityConfig);
+  const gravity = createGravityState();
     internal = {
       ...internal,
       session: {
@@ -478,7 +478,7 @@ export function createGameLoop(options: GameLoopOptions = {}): GameLoop {
         active: active.type,
         nextQueuePiece,
       });
-    } catch (error) {
+    } catch {
       return;
     }
 
@@ -525,7 +525,7 @@ export function createGameLoop(options: GameLoopOptions = {}): GameLoop {
         rng: nextQueueState ? nextQueueState.rng : internal.session.rng,
         ghost: computeGhostPosition({ board: internal.session.board, piece: spawn }),
       },
-      gravity: createGravityState(internal.gravityConfig),
+  gravity: createGravityState(),
       pendingLockReset: false,
     };
 
@@ -790,7 +790,7 @@ function createInitialInternalState(
     lockDelayMs: speed.lockDelayMs,
     lockDelayFrames: LOCK_DELAY_FRAMES,
   };
-  const gravity = createGravityState(gravityConfig);
+  const gravity = createGravityState();
 
   return {
     session: {

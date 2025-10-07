@@ -1,10 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { createSevenBagRng } from '../../../src/core/rng';
+
 import {
   advanceQueue,
   createNextQueue,
   type NextQueueState,
 } from '../../../src/core/next-queue';
+import { createSevenBagRng } from '../../../src/core/rng';
 
 const TETROMINO_TYPES = new Set(['I', 'O', 'T', 'S', 'Z', 'J', 'L']);
 

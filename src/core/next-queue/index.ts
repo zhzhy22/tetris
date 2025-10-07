@@ -1,5 +1,6 @@
-import type { RandomState, TetrominoType } from '../rng';
 import { drawNextPiece } from '../rng';
+
+import type { RandomState, TetrominoType } from '../rng';
 
 export interface NextQueueState {
   active: TetrominoType;

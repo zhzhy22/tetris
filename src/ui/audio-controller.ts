@@ -1,6 +1,7 @@
-import type { ControlInput, GameSessionState } from '../core/game-loop';
-import type { SfxManager } from '../audio/sfx';
 import { generateToneWave, type ToneGenerationOptions } from '../audio/tone';
+
+import type { SfxManager } from '../audio/sfx';
+import type { ControlInput, GameSessionState } from '../core/game-loop';
 
 export type SfxId = 'hard-drop' | 'line-clear' | 'game-over';
 
@@ -80,7 +81,7 @@ export function createAudioController(options: AudioControllerOptions): AudioCon
       return;
     }
     const promise = sfxManager
-      .loadSample(id, async () => cloneBuffer(ensureTone(id)))
+      .loadSample(id, () => Promise.resolve(cloneBuffer(ensureTone(id))))
       .catch((error) => {
         if (logger) {
           logger.warn(`Failed to load sound sample: ${id}`);

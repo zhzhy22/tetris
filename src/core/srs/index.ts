@@ -355,7 +355,9 @@ export function getPieceShape(type: TetrominoType, rotation: RotationState): boo
   const resolvedHeight = Math.max(1, height);
   const resolvedWidth = Math.max(1, width);
 
-  const shape = Array.from({ length: resolvedHeight }, () => Array(resolvedWidth).fill(false));
+  const shape: boolean[][] = Array.from({ length: resolvedHeight }, () =>
+    Array.from({ length: resolvedWidth }, () => false),
+  );
 
   for (const cell of cells) {
     shape[cell.row][cell.col] = true;

@@ -20,7 +20,6 @@ if ('serviceWorker' in navigator && import.meta.env.PROD) {
     try {
       await navigator.serviceWorker.register('/sw.js');
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.warn('Service worker registration failed', error);
     }
   };

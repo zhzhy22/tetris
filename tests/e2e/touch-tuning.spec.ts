@@ -1,6 +1,7 @@
 import { test, expect, type Locator } from '@playwright/test';
-import { performSwipe, waitForFrame, readScore } from './utils/touch';
+
 import { installDeterministicRng } from './utils/deterministic';
+import { performSwipe, waitForFrame, readScore } from './utils/touch';
 
 test.describe('touch tuning', () => {
   test('applies updated thresholds immediately', async ({ page }) => {

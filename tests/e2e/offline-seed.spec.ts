@@ -1,10 +1,14 @@
-import { test, expect, type Locator, type Page, type Route } from '@playwright/test';
-import { installDeterministicRng } from './utils/deterministic';
-import path from 'node:path';
-import fs from 'node:fs/promises';
-import { fileURLToPath } from 'node:url';
 import { spawn } from 'node:child_process';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+import { test, expect, type Locator, type Page, type Route } from '@playwright/test';
+
 import { SETTINGS_STORAGE_KEY, HIGH_SCORES_STORAGE_KEY } from '../../src/storage/local';
+
+import { installDeterministicRng } from './utils/deterministic';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

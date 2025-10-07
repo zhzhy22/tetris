@@ -1,9 +1,11 @@
 import { describe, expect, it } from 'vitest';
+
 import { createEmptyBoard } from '../../../src/core/board';
 import { checkCollision } from '../../../src/core/collision';
-import { getPieceShape, type PieceState, type RotationState } from '../../../src/core/srs';
-import type { TetrominoType } from '../../../src/core/rng';
 import { computeGhostPosition } from '../../../src/core/ghost';
+import { getPieceShape, type PieceState, type RotationState } from '../../../src/core/srs';
+
+import type { TetrominoType } from '../../../src/core/rng';
 
 function createPiece(
   type: TetrominoType,

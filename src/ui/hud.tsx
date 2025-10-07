@@ -1,5 +1,6 @@
-import type { GameSessionState } from '../core/game-loop';
 import { getPieceShape } from '../core/srs';
+
+import type { GameSessionState } from '../core/game-loop';
 import type { TetrominoType } from '../core/rng';
 
 export interface HudOptions {

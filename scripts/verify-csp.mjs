@@ -138,17 +138,13 @@ async function main() {
   const cspValue = extractCspMeta(html);
   const directives = parseCspDirectives(cspValue);
   assertDirectives(directives);
-  /* eslint-disable no-console */
   console.log('CSP verification passed.');
-  /* eslint-enable no-console */
 }
 
 main().catch((error) => {
-  /* eslint-disable no-console */
   console.error('[verify-csp] check failed:', error.message);
   if (error?.cause) {
     console.error('  cause:', error.cause);
   }
-  /* eslint-enable no-console */
   process.exitCode = 1;
 });

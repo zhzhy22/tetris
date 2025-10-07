@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+
 import { performSwipe, captureCanvas, readScore, waitForFrame } from './utils/touch';
 
 test.describe('touch gesture controls', () => {

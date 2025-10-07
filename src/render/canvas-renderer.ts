@@ -1,4 +1,5 @@
 import { getPieceShape, type PieceState } from '../core/srs';
+
 import type { Board } from '../core/board';
 import type { TetrominoType } from '../core/rng';
 
@@ -193,8 +194,8 @@ export function createCanvasRenderer(): CanvasRenderer {
     state.pixelHeight = height;
     state.canvas.width = Math.round(width * state.dpr);
     state.canvas.height = Math.round(height * state.dpr);
-    (state.canvas.style as CSSStyleDeclaration).width = `${width}px`;
-    (state.canvas.style as CSSStyleDeclaration).height = `${height}px`;
+  state.canvas.style.width = `${width}px`;
+  state.canvas.style.height = `${height}px`;
     state.scaled = false;
     configureCanvas(state.ctx);
   }

@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+
 import { canPlace, checkCollision } from '../../../src/core/collision';
 
 const BOARD_WIDTH = 20;

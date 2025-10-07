@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+
 import {
   createEmptyBoard,
   lockPiece,
@@ -76,8 +77,8 @@ describe('lockPiece', () => {
   const { board: nextBoard, clearedLines } = lockPiece(input);
 
   expect(clearedLines).toEqual([targetRow]);
-    const targetRowCells = nextBoard[targetRow]!;
-    const bottomRowCells = nextBoard[BOARD_HEIGHT - 1]!;
+    const targetRowCells = nextBoard[targetRow];
+    const bottomRowCells = nextBoard[BOARD_HEIGHT - 1];
     for (const cell of targetRowCells) {
       expect(cell.occupied).toBe(false);
     }
@@ -120,8 +121,8 @@ describe('lockPiece', () => {
   const { board: nextBoard, clearedLines } = lockPiece(input);
 
   expect(clearedLines).toEqual(rowsToFill);
-    const compactRow = nextBoard[baseRow]!;
-    const belowCompactRow = nextBoard[baseRow + 1]!;
+    const compactRow = nextBoard[baseRow];
+    const belowCompactRow = nextBoard[baseRow + 1];
     for (const cell of compactRow) {
       expect(cell.occupied).toBe(false);
     }

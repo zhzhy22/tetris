@@ -1,4 +1,5 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest';
+
 import { createSfxManager, type SfxManager } from '../../../src/audio/sfx';
 
 declare global {

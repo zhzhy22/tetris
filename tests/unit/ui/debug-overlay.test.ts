@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { createDebugOverlay } from '../../../src/ui/debug-overlay';
-import type { GameSessionState } from '../../../src/core/game-loop';
+
 import { createEmptyBoard } from '../../../src/core/board';
+import { createDebugOverlay } from '../../../src/ui/debug-overlay';
+
+import type { GameSessionState } from '../../../src/core/game-loop';
 import type { TetrominoType } from '../../../src/core/rng';
 
 function createState(): GameSessionState {

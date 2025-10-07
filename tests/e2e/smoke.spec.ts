@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+
 import { installDeterministicRng } from './utils/deterministic';
 
 test.describe('smoke', () => {
